@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">TD2</string>
+    <string name="hello_world">Hello world</string>
+    <string name="exercices">Choisir l\'exercice</string>
+    <string name="repas">Activité repas</string>
+    <string name="entree">Entrée</string>
+    <string name="platprincipale">Plat principale</string>
+    <string name="principale">Plat principal</string>
+    <string name="fromage">Fromage</string>
+    <string name="fruit">Fruit</string>
+    <string name="midi">Midi</string>
+    <string name="soir">Soir</string>
+    <string name="valider">Valider</string>
+    <string name="annuler">Annuler</string>
 </resources>
