@@ -28,7 +28,7 @@ carre <- function(x) { return (x*x) }
 carre(3)
 
 # --------------   Vectors   -------------------------
-print('# --------------   Vectors   -------------------------')
+cat('# --------------   Vectors   -------------------------')
 v1 <- vector("numeric", 10)
 print(v1)
 v2 <- vector("logical", 8)
