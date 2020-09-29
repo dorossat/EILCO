@@ -12,4 +12,10 @@
     <string name="soir">Soir</string>
     <string name="valider">Valider</string>
     <string name="annuler">Annuler</string>
+    <string name="date">Date</string>
+    <string name="time">Heure</string>
+    <string name="spinner">Spinner</string>
+    <string name="degage">Dégagé</string>
+    <string name="pluvieux">Pluvieux</string>
+    <string name="couvert">Couvert</string>
 </resources>

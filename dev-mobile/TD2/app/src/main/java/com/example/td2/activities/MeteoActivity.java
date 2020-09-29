@@ -7,12 +7,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.td2.R;
 
-public class RepasActivity extends AppCompatActivity {
+public class MeteoActivity extends AppCompatActivity {
     @Override
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.repas);
-
+        setContentView(R.layout.meteo);
     }
 }
