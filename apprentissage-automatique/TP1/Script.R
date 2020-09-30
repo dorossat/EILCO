@@ -62,3 +62,31 @@ names(tailleF)
 
 # ---------------- Union function ---------------------------------------
 union(tailleF, tailleG)
+# ...
+
+# ---------------- Factors ---------------------------------------
+vent <- factor(c("fort", "faible", "moyen", "faible", "faible", "fort"))
+vent
+
+# ---------------- Matrix ---------------------------------------
+m1 <- matrix(1:6, nrow = 2, ncol = 3)
+m2 <- matrix(1:6, nrow = 2, ncol = 3, byrow = TRUE)
+m3 <- matrix(c(40, 80, 45, 21, 55 ,32), nrow = 2, ncol = 3)
+
+# ---------------- Lists ---------------------------------------
+athletes <- list(Didier=c(630, 625, 628, 599, 635, 633, 622),
+                 Jules=c(610, 590, 595, 582, 601, 603),
+                 Pierre=c(644, 638, 639, 627, 642, 633, 639),
+                 Matthieu=c(622, 625, 633, 641, 610),
+                 Georges=c(561, 572, 555, 569, 653, 549, 558, 561),
+                 Khaled=c(611, 621, 619, 618, 623, 614, 623),
+                 Guillaume=c(599, 601, 612, 609, 607, 608, 594),
+                 Hermann=c(624, 630, 631, 629, 634, 618, 622),
+                 Carlos=c(528, 531, 519, 533, 521), Keith=c(513))
+# ---------------- Data frame ---------------------------------------
+resultats <- data.frame(taille=c(185,178,165,171,172),
+                        poids=c(82,81,55,65,68),
+                        QI=c(110,108,125,99,124),
+                        sexe=c("M","M","F","F","F"),
+                        row.names=c("Paul","Matthieu",
+                                    "Camille","Mireille","Capucine"))
