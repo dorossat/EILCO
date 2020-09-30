@@ -13,3 +13,8 @@ generate <- function (n) {
 }
 generate(15)
 plot(generate(15), xlab = "X", ylab = "Y")
+
+# ------ 2nd part ------
+model1 <- lm(y ~ x)
+print(model1)
+modelM <- lm(y ~ poly(x, M)) #  avec M appartient à {1,2,3,6,12}
