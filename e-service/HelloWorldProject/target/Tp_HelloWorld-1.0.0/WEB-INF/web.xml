@@ -7,12 +7,12 @@
     <display-name>My first web application</display-name>
     <description>The description of web application deploiement</description>
 
-    <!-- Definition du servelt -->
+    <!-- Definition du servlet -->
     <servlet>
         <servlet-name>HelloServlet</servlet-name>
         <servlet-class>h.hamza.servlets.HelloServlet</servlet-class>
         <init-param>
-            <param-name>Auteur</param-name>
+            <param-name>Author</param-name>
             <param-value>Hamza HRAMCHI</param-value>
         </init-param>
 
@@ -20,7 +20,7 @@
 
     <servlet-mapping>
         <servlet-name>HelloServlet</servlet-name>
-        <url-pattern>/helloworld</url-pattern>
+        <url-pattern>/Hello</url-pattern>
     </servlet-mapping>
     <!---->
 
