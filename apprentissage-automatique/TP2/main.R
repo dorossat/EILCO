@@ -49,7 +49,6 @@ plot12 <- lines(z, pred12, col = "red", lty = 1)
 
 # ----------------------------- 3d part ------------------------------------------
 
-# generer et affichage un ensemble de 1000 pour test
 data_test <- generate(1000)
 plot(data_test, xlab = "x", ylab = "y", col = "blue", pch = 19)
 
@@ -75,3 +74,5 @@ for (degre in seq(1:14)) {
 # plot des erreur
 plot(1:14, EQMA, col = "red")
 plot(1:14, EQMT, col = "yellow")
+
+line()
