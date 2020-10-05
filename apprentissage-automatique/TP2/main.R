@@ -3,7 +3,8 @@
 # Created by: Hamza HRAMCHI
 # Created on: 30/09/2020
 
-# ------ 1st part ------
+# ----------------------------- 1st part ------------------------------------------
+
 set.seed(0)
 generate <- function (n) {
   bruit <- rnorm(n, 0.5)
@@ -14,9 +15,9 @@ generate <- function (n) {
 f <- generate(15)
 # plot(f, xlab = "X", ylab = "Y")
 
-# ------ 2nd part ------
-# --- Générer 5 modèles de régression avec M appartient à {1,2,3,6,12}
+# ----------------------------- 2nd part ------------------------------------------
 
+# --- Générer 5 modèles de régression avec M appartient à {1,2,3,6,12}
 
 x <- f[,1]
 y <- f[,2]
@@ -46,6 +47,31 @@ plot12 <- lines(z, pred12, col = "red", lty = 1)
 # The best one : Model3
 # Le phénomène est : SurApprentissage
 
-# ------ 3d part ------
-test <- generate(100)
-plot(test, xlab = "X", ylab = "Y")
+# ----------------------------- 3d part ------------------------------------------
+
+# generer et affichage un ensemble de 1000 pour test
+data_test <- generate(1000)
+plot(data_test, xlab = "x", ylab = "y", col = "blue", pch = 19)
+
+# Erreur quadratique fonction pour l'apprentisage et test
+erreur_quadratique_moyenne <- function (x, y, degree) {
+  model <- lm(y ~ poly(x, degree))
+  predicat_apprentissage <- predict(model, data.frame(x = x))
+  eqma <- sqrt(1/15 * sum((y - predicat_apprentissage)^2))
+  predicat_test <- predict(model, data.frame(x = x))
+  eqmt <- sqrt(1/1000 * sum((y - predicat_test)^2))
+  return (c(eqma, eqmt))
+}
+
+EQMA <- 1:14
+EQMT <- 1:14
+
+for (degre in seq(1:14)) {
+  EQM <- erreur_quadratique_moyenne(x, y, degre)
+  EQMA[degre] <- EQM[1]
+  EQMT[degre] <- EQM[2]
+}
+
+# plot des erreur
+plot(1:14, EQMA, col = "red")
+plot(1:14, EQMT, col = "yellow")
