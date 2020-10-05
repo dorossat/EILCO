@@ -75,4 +75,5 @@ for (degre in seq(1:14)) {
 plot(1:14, EQMA, col = "red")
 plot(1:14, EQMT, col = "yellow")
 
-line()
+lines(1:14, EQMA, col = "red")
+lines(1:14, EQMT, col = "yellow")
