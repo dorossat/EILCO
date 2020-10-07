@@ -19,10 +19,26 @@ plot(tree.tennis , branch=0)
 plot(tree.tennis , branch=.7 )
 text(tree.tennis, use.n=T)
 plot(tree.tennis , branch=.4 , uniform=T, compress=T)
-text ( tree.tennis,all=T, use.n=T)
+text (tree.tennis,all=T, use.n=T)
 plot(tree.tennis,branch=.2 , uniform=T, compress=T,
      margin=.1 )
 text(tree.tennis, all = T, use.n = T, fancy = T)
+
+data.test <-read.csv("tennis_test.csv")
+predict(tree.tennis, data.test, "class")
+
+#matrice de confusion
+prediction <- predict(tree.tennis, data.tennis, "class")
+table(prediction, data.tennis$Jouer)
+
+# Mettre minsplit à 5 et calculer le nouveau taux d'erreur de l'arbre
+cnt.tennis <- rpart.control(minsplit = 5)
+tree.tennis <-rpart(Jouer ~ Ciel +Temperature +Humidite + Vent,data.tennis, control = cnt.tennis)
+plot(tree.tennis)
+text(tree.tennis)
+prediction <- predict(tree.tennis, data.tennis, "class")
+table(prediction, data.tennis$Jouer)
+
 
 
 
