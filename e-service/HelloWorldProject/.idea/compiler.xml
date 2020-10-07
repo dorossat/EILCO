@@ -10,6 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="HelloEJBProject" target="1.8" />
       <module name="Tp_HelloWorld" target="1.8" />
     </bytecodeTargetLevel>
   </component>
