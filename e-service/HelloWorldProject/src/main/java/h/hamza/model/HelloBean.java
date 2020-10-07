@@ -1,5 +1,6 @@
 package h.hamza.model;
 
+import javax.servlet.http.HttpSession;
 import java.io.Serializable;
 
 public class HelloBean implements Serializable {
