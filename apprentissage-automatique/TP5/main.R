@@ -37,10 +37,12 @@ print(table)
 #              La classification
 # ------------------------------------
 # Charger les données "iris.csv"
+set.seed(0)
 data <- read.csv ("iris.csv" , header=TRUE)
 print(data)
 # Normaliser les données
-iris=iris[order(v),]
+# -- Mélanger l'ordre des lignes
+iris <- iris[order(v),]
 head(iris)
 v <- round(runif(150,min=0,max=1),digits=2)
 normalize <- function(v) {
@@ -49,12 +51,48 @@ normalize <- function(v) {
   v <- (v - min) / (max - min)
   return(v)
 }
+
+# -- Appliquons la normalisation
 irisNormalise <- as.data.frame(lapply(iris[, 1:4], normalize))
 irisNormalise <- cbind(irisNormalise, iris$Species)
 colnames(irisNormalise) <- c("SepalLength","SepalWidth","PetalLength","PetalWidth","Species")
 irisNormalise
 
-#
+# Séparer les données en échantillon d'apprentissage iris.app et un échantillon
+# de test iris.test
+extract <- sample(1:150,105)
+iris.app <- irisNormalise[extract,] # 70% => 105
+iris.test <- irisNormalise[-extract,] # 30% => 45
+
+# Ajouter 3 colonnes booléennes
+iris.app$setosa     <- iris.app$Species=="setosa"
+iris.app$virginica  <- iris.app$Species=="virginica"
+iris.app$versicolor <- iris.app$Species=="versicolor"
+
+iris.app$Species<-NULL # Supprimer la colonne Species
+
+# Le réseau de neurones avec une couche de 3 neurones cachés
+ne.iris<- neuralnet(setosa+versicolor+virginica ~ SepalLength + SepalWidth + PetalLength+PetalWidth , data=iris.app, hidden=c(5,2))
+plot(ne.iris)
+
+# La prédection de l'échantillon de test iris.test avec la fonction compute
+prediction <- compute(ne.iris,iris.test[,-5])
+colnames(prediction$net.result) <- c("Iris-setosa","Iris-versicolor","Iris-virginica")
+prediction$net.result
+prediction$neurons
+
+# Recuperer les labels à partir des valeurs prédites du réseau de neurones
+names(which.max(prediction$net.result[1,]))
+labels.predicted=rep(0.45)
+for (i in 1:45)
+  labels.predicted[i]=names(which.max(prediction$net.result[i,]))
+
+# Comparer les labels prédits et les étiquettes dans iris.test
+labels.predicted
+labels.predicted= as.factor(labels.predicted)
+labels.predicted
+labels.test
+table(iris.test[,5],labels.predicted)
 
 
 
