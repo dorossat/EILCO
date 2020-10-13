@@ -39,6 +39,23 @@ print(table)
 # Charger les données "iris.csv"
 data <- read.csv ("iris.csv" , header=TRUE)
 print(data)
+# Normaliser les données
+iris=iris[order(v),]
+head(iris)
+v <- round(runif(150,min=0,max=1),digits=2)
+normalize <- function(v) {
+  max <- max(v)
+  min <- min(v)
+  v <- (v - min) / (max - min)
+  return(v)
+}
+irisNormalise <- as.data.frame(lapply(iris[, 1:4], normalize))
+irisNormalise <- cbind(irisNormalise, iris$Species)
+colnames(irisNormalise) <- c("SepalLength","SepalWidth","PetalLength","PetalWidth","Species")
+irisNormalise
+
+#
+
 
 
 
