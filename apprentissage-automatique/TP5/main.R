@@ -42,9 +42,9 @@ data <- read.csv ("iris.csv" , header=TRUE)
 print(data)
 # Normaliser les données
 # -- Mélanger l'ordre des lignes
+v <- round(runif(150,min=0,max=1),digits=2)
 iris <- iris[order(v),]
 head(iris)
-v <- round(runif(150,min=0,max=1),digits=2)
 normalize <- function(v) {
   max <- max(v)
   min <- min(v)
@@ -91,7 +91,6 @@ for (i in 1:45)
 labels.predicted
 labels.predicted= as.factor(labels.predicted)
 labels.predicted
-labels.test
 table(iris.test[,5],labels.predicted)
 
 
