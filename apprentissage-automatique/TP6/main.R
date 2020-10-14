@@ -27,8 +27,8 @@ iris.3means <-kmeans (irisN [,1:4], 3)
 iris.3means$cluster
 iris.3means$centers
 iris.3means$withinss
-iris.3means$tot.withinss # inertie inter-classe
-iris.3means$ betweenss
+iris.3means$tot.withinss
+iris.3means$betweenss
 iris.3means$size
 
 # -- Visualization
@@ -49,15 +49,25 @@ avg_interclasse <- integer(9)
 avg_intraclasse <- integer(9)
 
 for(i in 2:10){
-  iris.kmeans <- kmeans(irisN[,1:4], centers=i, nstart=30) # Without Species
+  iris.kmeans <- kmeans(irisN[,1:4], centers = i, nstart = 30) # Without Species
   avg_interclasse[i-1] <- iris.kmeans$tot.withinss
   avg_intraclasse[i-1] <- iris.kmeans$betweenss
 }
 
 dmatrix <- dist(irisN[,1:4])
 
-plot(2:10,avg_interclasse,type="b", main="Withinss en fonction de k", ylab="avg des sommes de withinss", xlab="K")
+plot(2:10,avg_interclasse,type="b", main="tot.Withinss en fonction de k", ylab="avg des sommes de tot.withinss", xlab="K")
 plot(2:10,avg_intraclasse,type="b",main="Betweeness en fonction de k", ylab="avg des sommes de betweeness", xlab="K")
+
+plot.new()
+plot(2:10,avg_interclasse,type="b", main="tot.Withinss en fonction de k", ylab="avg des sommes de tot.withinss", xlab="K")
+axis(2, ylim=c(0,10),col="blue",col.axis="blue",at=seq(0, 10, by=2))
+par(new = T)
+plot(2:10,avg_intraclasse,type="b",main="Betweeness en fonction de k", ylab="avg des sommes de betweeness", xlab="K")
+axis( 4 ,col="red",col.axis="red",at=seq(20, 40, by=5))
+axis( 1 , ylim=c(20,40),col="black",col.axis="black",at=seq(0, 12, by=2))
+
+# -- Les deux courbes se croissent, value(K) = 3
 
 
 
