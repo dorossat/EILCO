@@ -94,5 +94,13 @@ labels.predicted
 table(iris.test[,5],labels.predicted)
 
 
+# ----------------------------------
+# Exercice 3 : Réseau de neurones
+#              pour la régression
+# ----------------------------------
+data.gasoline <- read.csv ("gasoline.csv" , header=TRUE)
+
+
+
 
 
