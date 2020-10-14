@@ -9,12 +9,11 @@
 
 # -- La fonction kmeans()
 normalize = function(v){
-  max=max(v)
-  min=min(v)
-  v=(v-min)/(max-min)
+  max <- max(v)
+  min <- min(v)
+  v <- (v-min)/(max-min)
   return(v)
 }
-
 iris <- read.csv ("iris.csv", header = T)
 iris <- iris[,-1]
 irisN <- as.data.frame(lapply(iris[, 1:4], normalize))
