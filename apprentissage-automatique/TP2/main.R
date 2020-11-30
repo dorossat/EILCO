@@ -6,14 +6,14 @@
 # ----------------------------- 1st part ------------------------------------------
 
 set.seed(0)
-generate <- function (n) {
+generate <- function (n, min, max) {
   bruit <- rnorm(n, 0.5)
-  x <- runif(n, -10, 10)
+  x <- runif(n, min, max)
   y <- (0.1*x^3 - 0.5*x^2 - x + 10) + bruit
   return (matrix(c(x, y), nrow = n, ncol = 2))
 }
-f <- generate(15)
-# plot(f, xlab = "X", ylab = "Y")
+f <- generate(15, -10, 10)
+plot(f, xlab = "X", ylab = "Y")
 
 # ----------------------------- 2nd part ------------------------------------------
 
@@ -39,11 +39,11 @@ pred6 <- predict(model6, data.frame(x = z))
 pred12 <- predict(model12, data.frame(x = z))
 
 # --- Afficher chacunes des prédections sur le plot avec la fonction lines
-plot1 <- lines(z, pred1, col = "green", lty = 1)
-plot2 <- lines(z, pred2, col = "blue", lty = 1)
+#plot1 <- lines(z, pred1, col = "green", lty = 1)
+#plot2 <- lines(z, pred2, col = "blue", lty = 1)
 plot3 <- lines(z, pred3, col = "orange", lty = 1)
-plot6 <- lines(z, pred6, col = "yellow", lty = 1)
-plot12 <- lines(z, pred12, col = "red", lty = 1)
+#plot6 <- lines(z, pred6, col = "yellow", lty = 1)
+#plot12 <- lines(z, pred12, col = "red", lty = 1)
 # The best one : Model3
 # Le phénomène est : SurApprentissage
 
